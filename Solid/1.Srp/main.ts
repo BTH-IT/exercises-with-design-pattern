@@ -8,62 +8,60 @@
  * Happy coding! 🚀
  */
 
-// class Book {
-//     title: string;
-//     author: string;
-//     publicationYear: number;
-//     constructor(title: string, author: string, publicationYear: number) {
-//         this.title = title;
-//         this.author = author;
-//         this.publicationYear = publicationYear;
-//     }
-// }
+export class Book {
+  title: string;
+  author: string;
+  publicationYear: number;
 
-// class Library {
-//     books: Book[];
+  constructor(title: string, author: string, publicationYear: number) {
+    this.title = title;
+    this.author = author;
+    this.publicationYear = publicationYear;
+  }
+}
 
-//     constructor() {
-//         this.books = [];
-//     }
-//     addBook(book: Book): void {
-//         this.books.push(book);
-//     }
+export class Library {
+  private books: Book[];
 
-//     getListBooks(): Book[] {
-//         return this.books;
-//     }
+  constructor() {
+    this.books = [];
+  }
 
-//     removeBook(title: string): void {
-//         this.books = this.books.filter(book => book.title !== title);
-//     }
+  addBook(book: Book): void {
+    this.books.push(book);
+  }
 
-//     getBookByTitle(title: string): Book | undefined {
-//         return this.books.find(book => book.title === title);
-//     }
+  removeBook(book: Book): void {
+    this.books = this.books.filter((b) => b !== book);
+  }
 
-//     getTotalNumberOfBooks(): number {
-//         return this.books.length;
-//     }
+  getBooks(): Book[] {
+    return this.books;
+  }
+}
 
-//     getBooksByAuthor(author: string): Book[] {
-//         return this.books.filter(book => book.author === author);
-//     }
+export class LibraryManager {
+  private library: Library;
 
-//     getBooksByPublicationYear(publicationYear: number): Book[] {
-//         return this.books.filter(book => book.publicationYear === publicationYear);
-//     }
-// }
+  constructor(library: Library) {
+    this.library = library;
+  }
 
-// let lib: Library;
-// lib = new Library();
+  getBookByTitle(title: string): Book | undefined {
+    return this.library.getBooks().find((book) => book.title === title);
+  }
 
-// let book1: Book;
-// book1 = new Book('Clean Code', 'Edric Cao', 2023);
+  getTotalNumberOfBooks(): number {
+    return this.library.getBooks().length;
+  }
 
-// let book2: Book;
-// book2 = new Book('Design Pattern', 'Edric Cao', 2022);
+  getBooksByAuthor(author: string): Book[] {
+    return this.library.getBooks().filter((book) => book.author === author);
+  }
 
-// lib.addBook(book1);
-// lib.addBook(book2);
-// console.log(lib.getBookByTitle('Clean Code')); // Output: Book { title: 'Clean Code', author: 'Edric Cao', publicationYear: 2023 }
-
+  getBooksByPublicationYear(publicationYear: number): Book[] {
+    return this.library
+      .getBooks()
+      .filter((book) => book.publicationYear === publicationYear);
+  }
+}

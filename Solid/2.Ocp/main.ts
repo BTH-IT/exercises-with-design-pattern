@@ -9,94 +9,88 @@
  */
 
 /*=========== START PRACTICE 1 ===============*/
-// class Shape {
-//     shapes: Shape[];
-//     constructor(shapes: Shape[]) {
-//         this.shapes = shapes;
-//     }
+abstract class Shape {
+  abstract calculateArea(): number;
+}
 
-//     calculateArea(): number {
-//         let total = 0;
-//         this.shapes.forEach((shape) => {
-//             if (shape instanceof Circle) {
-//                 total += Math.PI * Math.pow(shape.radius, 2);
-//             }
-//             if (shape instanceof Rectangle) {
-//                 total += shape.height * shape.width;
-//             }
-//             if (shape instanceof Triangle) {
-//                 total += 0.5 * shape.length * shape.length;
-//             }
-//         });
-//         return total;
-//     }
-// }
+export class Circle extends Shape {
+  radius: number;
 
-// class Circle extends Shape {
-//     radius: number;
-//     constructor(radius: number) {
-//         super([]);
-//         this.radius = radius;
-//     }
-// }
+  constructor(radius: number) {
+    super();
+    this.radius = radius;
+  }
 
-// class Rectangle extends Shape {
-//     height: number
-//     width: number
-//     constructor(height: number, width: number) {
-//         super([]);
-//         this.height = height;
-//         this.width = width;
+  calculateArea(): number {
+    return Math.PI * Math.pow(this.radius, 2);
+  }
+}
 
-//     }
-// }
-// class Triangle extends Shape {
-//     length: number
-//     constructor(length: number) {
-//         super([]);
-//         this.length = length;
-//     }
-// }
+export class Rectangle extends Shape {
+  height: number;
+  width: number;
 
+  constructor(height: number, width: number) {
+    super();
+    this.height = height;
+    this.width = width;
+  }
 
-// let shapes: Shape[] = [
-//     new Circle(5),
-//     new Rectangle(4, 5),
-//     new Triangle(3)
-// ];
-// const shapesInstance = new Shape(shapes);
-// console.log(shapesInstance.calculateArea());
+  calculateArea(): number {
+    return this.height * this.width;
+  }
+}
+
+export class Triangle extends Shape {
+  length: number;
+
+  constructor(length: number) {
+    super();
+    this.length = length;
+  }
+
+  calculateArea(): number {
+    return 0.5 * this.length * this.length;
+  }
+}
+
 /*=========== END PRACTICE 1 ===============*/
 
-
-
 /*=========== START PRACTICE 2 ===============*/
-// enum EmployeeType {
-//     FullTime,
-//     PartTime,
-//     Intern
-// }
+abstract class Employee {
+  constructor(public name: string) {}
 
-// class Employee {
-//     constructor(public name: string, public type: EmployeeType) { }
+  abstract calculateSalary(): number;
+}
 
-//     calculateSalary(): number {
-//         switch (this.type) {
-//             case EmployeeType.FullTime:
-//                 return 5000;
-//             case EmployeeType.PartTime:
-//                 return 3000;
-//             case EmployeeType.Intern:
-//                 return 1000;
-//             default:
-//                 throw new Error("Unknown employee type");
-//         }
-//     }
-// }
+export class EmployeeFullTime extends Employee {
+  constructor(name: string) {
+    super(name);
+  }
 
-// const fullTimeEmployee = new Employee("Alice", EmployeeType.FullTime);
-// console.log(`${fullTimeEmployee.name}'s salary is ${fullTimeEmployee.calculateSalary()}`);
+  calculateSalary(): number {
+    return 5000;
+  }
+}
 
-// const internEmployee = new Employee("Bob", EmployeeType.Intern);
-// console.log(`${internEmployee.name}'s salary is ${internEmployee.calculateSalary()}`);
+export class EmployeePartTime extends Employee {
+  constructor(name: string) {
+    super(name);
+  }
+
+  calculateSalary(): number {
+    return 3000;
+  }
+}
+
+export class EmployeeIntern extends Employee {
+  constructor(name: string) {
+    super(name);
+  }
+
+  calculateSalary(): number {
+    return 1000;
+  }
+}
+
 /*=========== END PRACTICE 2 ===============*/

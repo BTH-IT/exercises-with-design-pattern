@@ -1,23 +1,22 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "noImplicitAny": true,
-        "removeComments": true,
-        "preserveConstEnums": true,
-        "sourceMap": true,
-        "strict": true,
-        "esModuleInterop": true,
-        "target": "ES6", // Or "ES2015" or higher
-        "lib": [
-            "ES6",
-            "DOM"
-        ],
-        "types": [
-            "jest"
-        ]
-    },
-    "include": [
-        "Solid/**/*",
-        "tests/**/*"
-    ]
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES6",
+    "strict": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["ES6", "DOM"],
+    "types": ["jest"],
+    "outDir": "./dist",
+    "rootDir": "./"
+  },
+  "include": ["Solid/**/*", "tests/**/*"],
+  "exclude": ["node_modules"]
 }
